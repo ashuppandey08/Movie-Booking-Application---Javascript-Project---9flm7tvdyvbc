@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summary</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .summary-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        width: 25%;
+        padding: 20px;
+        border: 1px solid lightgray;
+      }
+
+      .payment-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        width: 75%;
+        padding: 20px;
+        border: 1px solid lightgray;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      select {
+        padding: 10px;
+        margin-top: 10px;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        margin-top: 20px;
+        font-size: 16px;
+        background-color: lightblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 1024px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .summary-section,
+        .payment-section {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="summary-section">
+        <h3>Summary</h3>
+        <p>Movie: <span id="movie-name">The Matrix</span></p>
+        <p>Cost of a Ticket:<span id="ticket-price">10</span></p>
+        <p>Number of Tickets: <input type="text" id="ticket-count" /></p>
+        <p>Convenience Fee: $<span id="convenience-fee">2</span></p>
+        <p>Subtotal: $<span id="subtotal">12</span></p>
+      </div>
+      <div class="payment-section">
+        <h3>Payment</h3>
+        <form>
+          <input type="text" placeholder="First Name" required />
+          <input type="text" placeholder="Last Name" required />
+          <input type="email" placeholder="Email" required />
+          <select>
+            <option value="">Select Payment Method</option>
+            <option value="credit-card">Credit Card</option>
+            <option value="debit-card">Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="stripe">Stripe</option>
+          </select>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </div>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const price = urlParams.get("price");
+      const title = urlParams.get("title");
+      console.log(title);
+      console.log(price);
+      document.getElementById("ticket-price").innerHTML = price;
+      document.getElementById("movie-name").innerHTML = title;
+    </script>
+  </body>
+</html>
