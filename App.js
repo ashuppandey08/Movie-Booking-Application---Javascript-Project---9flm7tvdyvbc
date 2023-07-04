@@ -6,6 +6,8 @@ const SEARCHAPI =
   "https://api.themoviedb.org/3/search/movie?&api_key=505797406477a4b80509da6ad2698790&query=";
 const moiveBox = document.querySelector("#movie-box");
 const BASE_URL = "https://api.themoviedb.org/3";
+let price = Math.floor(Math.random()*(300-250+1)+250);
+let title = "";
 
 document.getElementById("movie-box").addEventListener("onclick", function () {
   console.log("qwerty");
@@ -201,7 +203,7 @@ const showMovies = (data) => {
 //checkout page
 
 function gotoCheckoutPage() {
-  window.location.href = `payment.html`;
+  window.location.href = `payment.html?price=${price}&title=${title}`;
 }
 // get movie details and price
 
